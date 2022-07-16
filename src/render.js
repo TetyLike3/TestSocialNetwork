@@ -8,13 +8,18 @@ const postTemplate = `
 const contentDiv = document.getElementById('content');
 
 
-
 function createPost(data,metadata) {
+    /*
     let newPost = document.createElement(postTemplate);
 
     newPost.getElementByClassName('title').innerText = data[0];
     newPost.getElementByClassName('text').innerText = data[1];
     newPost.getElementByClassName('author').innerText = metadata[0];
+    */
+    var docFragment = document.createDocumentFragment();
+    docFragment.appendChild(node1);
+    docFragment.appendChild(node2);
+    var newPost = docFragment.children;
 };
 
 setTimeout(createPost(["Test1","ball1ng"],["TetyBall1"]),3000);
