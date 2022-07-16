@@ -1,5 +1,13 @@
+const { time } = require('console');
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
+
+var ipc = require('electron').ipcMain;
+
+ipc.on('invokeAction', function(event, data){
+    var result = processData(data);
+    event.sender.send('actionReply', result);
+});
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // eslint-disable-next-line global-require
@@ -48,3 +56,10 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+const { postService } = require(path.join(__dirname, 'postService.js'));
+
+const data = ["Title","Description"];
+const metadata = ["Author","Date"];
+
+setTimeout(postService.createPost(data,metadata),3000);
