@@ -7,37 +7,14 @@
   <script>
     const networkName = "TestSocialNetwork";
 
-    function getId(id) {
-      return document.getElementById(id);
-    };
-
-    // Create Post button
-    var ipc = require('electron').ipcRenderer;
-    var newPostButton = document.getElementById('newPostButton');
-
-    // Create listener for the button and response
-    newPostButton.addEventListener('click', function () {
-      ipc.once('actionReply', function (event, response) {
-        // Create the post
-        const post = document.createElement('div');
-
-        post.className = 'post';
-        post.innerHTML = `
-          <h1>${data[0]}</h1>
-          <p>${data[1]}</p>}
-          <h3>${metadata[0]}</h3>
-        `;
-
-        document.getElementById('content').appendChild(post);
-      })
-      // Tell main process that a new post is being made
-      ipc.send('invokeAction', 'Placeholder Data');
-    });
+    function getId(id) {return document.getElementById(id)};
   </script>
 
   <title id="title">networkName</title>
   <script>getId('title').innerText = networkName</script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="index.css" />
+  <script defer src="render.js"></script>
 </head>
 
 <body>
