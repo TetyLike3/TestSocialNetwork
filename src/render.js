@@ -1,25 +1,21 @@
-/*
-// Create Post button
-var ipc = require('electron').ipcRenderer;
-var newPostButton = document.getElementById('newPostButton');
+const postTemplate = `
+    <div class="post">
+        <h1 class="title">Post Template</h1>
+        <p class="text">This is a template for a post.</p>
+        <h3 class="author">Template Author</h3>
+    </div>
+`
+const contentDiv = document.getElementById('content');
 
-// Create listener for the button and response
-newPostButton.addEventListener('click', function () {
-    ipc.once('actionReply', function (event, response) {
-    // Create the post
-    const post = document.createElement('div');
 
-    post.className = 'post';
-    post.innerHTML = `
-        <h1>${data[0]}</h1>
-        <p>${data[1]}</p>}
-        <h3>${metadata[0]}</h3>
-    `;
 
-    document.getElementById('content').appendChild(post);
-    })
-    // Tell main process that a new post is being made
-    ipc.send('invokeAction', 'Placeholder Data');
-});
-*/
+function createPost(data,metadata) {
+    let newPost = document.createElement(postTemplate);
 
+    newPost.getElementByClassName('title').innerText = data[0];
+    newPost.getElementByClassName('text').innerText = data[1];
+    newPost.getElementByClassName('author').innerText = metadata[0];
+};
+
+setTimeout(createPost(["Test1","ball1ng"],["TetyBall1"]),3000);
+setTimeout(createPost(["Test2","ball2ng"],["TetyBall2"]),3000);

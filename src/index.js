@@ -56,10 +56,3 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
-
-const { postService } = require(path.join(__dirname, 'postService.js'));
-
-const data = ["Title","Description"];
-const metadata = ["Author","Date"];
-
-setTimeout(postService.createPost(data,metadata),3000);
